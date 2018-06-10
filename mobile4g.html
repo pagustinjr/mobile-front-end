@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="ui-mobile">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- base href="http://www.t1shopper.com/mobile/mobile3.php" -->
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>MOBILE 4g</title>
+    <link rel="shortcut icon" href="http://www.t1shopper.com/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+    <link rel="stylesheet" href="//www.t1shopper.com/mobile/mobile.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+    <script  src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script async src="//www.t1shopper.com/mobile/jquerymobile.1.4.5.assets.index.js"></script>
+ 	<script async src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <link rel="canonical" href="http://www.t1shopper.com/mobile/mobile3.php">
+	<link rel="apple-touch-icon" href="http://www.t1shopper.com/mobile/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.t1shopper.com/i/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.t1shopper.com/i/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.t1shopper.com/i/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.t1shopper.com/i/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.t1shopper.com/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://www.t1shopper.com/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="http://www.t1shopper.com/manifest.json">
+    <link rel="mask-icon" href="http://www.t1shopper.com/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">    
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		function downloadJSAtOnload() {
+			var element = document.createElement("script");
+			element.src = "/ssi/t1shopper.js";
+			document.body.appendChild(element);
+		}
+		// Check for browser support of event handling capability
+		 if (window.addEventListener)
+			window.addEventListener("load", downloadJSAtOnload, false);
+		 else if (window.attachEvent)
+			window.attachEvent("onload", downloadJSAtOnload);
+		 else window.onload = downloadJSAtOnload;
+	</script>
+	<script>
+		$( document ).ready(function() {
+			var width = $(window).width(), height = $(window).height();
+			$( window ).resize(function() {
+				if($(window).width() != width && $(window).height() != height) {		
+				window.location.href=window.location.href;
+			}
+			});
+		});
+	</script>
+	<style>
+		.adslot_1 { width: 320px; height: 50px; margin:0 auto}
+		.adslot_2 { width: 320px; height: 50px; margin:0 auto}
+        .ft-ad-height{display:inline;float:right;width:468px;height:50px;margin-left:0;margin-right:0;border:0;text-align:center;}
+        .ft-ad-height2{width:100%;height:50px;border:0;text-align:center;z-index:6000}
+        .ft-ad-height3{width:100%;height:280px;display:none;border:0;text-align:center;margin-top:-2.75rem;padding-top:0;z-index:6000}
+		.jqm-navmenu-panel{margin-top:3.25rem}
+		.jqm-search-panel{margin-top:3rem}
+		.jqm-content{margin-top:1rem}
+		.jqm-list>li>a{padding:0.5rem}
+		.jqm-list>li>h3>a{padding:0.5rem}
+		.ui-listview>li>a{padding:0.5rem}
+		.jqm-header{position:fixed;width:100%;z-index:9999}
+
+		@media (max-width:350px)  
+			and (orientation: portrait) {
+			.ft-ad-height{right:1rem !important;width:100%;height:50px;margin-top:0rem;margin-bottom:0.5rem;margin-left:auto;margin-right:auto;clear:both}			
+			.ft-ad-height2{height:50px;margin-top:0}
+			#h1-port{margin-bottom:0.5rem}
+		}
+		@media (max-width:479px)  
+			and (orientation: portrait) {
+			.ft-ad-height{width:100%;height:50px;margin-top:-0.75rem;margin-bottom:0.5rem;margin-left:auto;margin-right:auto;clear:both}
+			.ft-ad-height2{height:50px;margin-top:0}
+			#h1-port{margin-bottom:0.5rem}
+		}
+		@media (min-width:480px) and (max-width:799px)
+			and (orientation: portrait) {
+			.adslot_1, .adslot_2 { width: 468px; height: 90px; } 
+			.ft-ad-height{width:100%;height:90px;margin-top:-0.75rem;margin-bottom:-1.25rem;margin-left:auto;margin-right:auto;clear:both}
+			.ft-ad-height2{height:90px;margin-top:0}
+		}
+		@media (min-width:480px) and (max-width:799px)
+			and (orientation: landscape) {
+			.adslot_1, .adslot_2 { width: 468px; height: 60px; } 
+			.ft-ad-height{width:100%;height:60px;margin-top:-0.75rem;margin-bottom:0.5rem;margin-left:auto;margin-right:auto;clear:both}
+			.ft-ad-height2{height:60px;margin-top:0}
+		}
+		@media (min-width:800px){
+			.adslot_1 { width: 468px; height: 60px; } 
+			.adslot_2 { width: 728px; height: 90px; } 
+			.ft-ad-height{height:60px;margin-top:0}
+			.ft-ad-height2{height:90px;margin-top:0}
+		}
+		@media (min-width:980px){
+			.adslot_1 { width: 468px; height: 90px; } 
+			.adslot_2 { width: 728px; height: 90px; } 
+			.ft-ad-height{height:60px;margin-top:0}
+			.ft-ad-height2{height:90px;margin-top:0}
+		}	
+		@media (min-width:1080px) 
+			and (orientation: landscape) {
+			.adslot_1 { width: 468px; height: 90px; } 
+			.adslot_2 { width: 728px; height: 90px; } 
+			.ft-ad-height{height:60px;margin-top:0}
+			.ft-ad-height2{height:90px;margin-top:0}
+			.ft-ad-height3{display:block}
+			.jqm-navmenu-panel{margin-top:2.25rem}
+			.jqm-search-panel{margin-top:5.75rem;margin-bottom:-5.75rem}
+			.jqm-content{margin-top:4rem}
+		}
+		.ui-loading .ui-loader{display:none}
+	</style>
+</head>
+<body class="ui-mobile-viewport ui-overlay-a">
+	<div data-role="page" class="jqm-demos jqm-home ui-page ui-page-theme-a ui-page-footer-fixed ui-page-active" id="page1" data-url="page1" tabindex="0" style="padding-bottom: 132px;">
+		<div data-role="header" class="jqm-header ui-header ui-bar-inherit" role="banner">
+			<h2 class="ui-title" aria-level="1"><img src="http://www.t1shopper.com/i/logo_t1_shopper.gif" alt="t1 Shopper Logo" class=""></h2>
+			<a href="#" class="jqm-navmenu-link ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" data-role="button" role="button">Menu</a>
+			<a href="#" class="jqm-search-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Search</a>
+		</div><!-- /header -->
+		<div role="main" class="ui-content jqm-content">			
+			<div class="ft-ad-height">
+				<ins class="adsbygoogle adslot_1"
+					 style="display:block"
+					 data-ad-client="ca-pub-3647130182727233"
+					 data-ad-slot="5063659030"></ins>
+				<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+			<h1 id="h1-port" style="display:inline;float:left">Ports to Scan</h1>
+			<form style="display:block;clear:both" data-ajax="false" name=portscan id=portscan action="mobile-portscan.php" method=GET style="margin:0">
+				<label for="scan_host" class="">Host name or IPv4 address:</label>
+				<div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+					<input data-enhanced="true" data-clear-btn="true" name="scan_host" id="scan_host" value="124.106.128.180" class="" type="text"><a href="#" class="ui-input-clear ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" title="Clear text">Clear text</a>
+				</div>
+				<div data-role="collapsibleset" data-theme="a" data-content-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" class="ui-collapsible-set ui-group-theme-a ui-corner-all">      
+					<div data-role="collapsible" class="ui-grid-b ui-responsive ui-collapsible ui-corner-all ui-collapsible-themed-content ui-first-child ui-collapsible-collapsed">
+						<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">Scan commonly exploited ports<span class="ui-collapsible-heading-status"> click to expand contents</span></h3>
+							<div class="ui-grid-b ui-responsive">                        
+								<div class="ui-block-a">
+									<fieldset data-role="controlgroup" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+										<div class="ui-controlgroup-controls ">
+											<div class="ui-checkbox ui-mini"><label for="checkbox0" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-first-child ui-checkbox-on">FTP/file server vulnerable (port 21)</label><input name="port_array[]" value="21" id="checkbox0" checked="checked" data-mini="true" data-cacheval="false" type="checkbox"></div>
+											<div class="ui-checkbox ui-mini"><label for="checkbox1" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-last-child ui-checkbox-on">TELNET service vulnerable (port 23)</label><input name="port_array[]" value="23" id="checkbox1" checked="checked" data-mini="true" data-cacheval="false" type="checkbox"></div>
+										</div>
+									</fieldset>   
+								</div>
+								<div class="ui-block-b">
+									<fieldset data-role="controlgroup" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+										<div class="ui-controlgroup-controls "> 
+											<div class="ui-checkbox ui-mini"><label for="checkbox2" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-first-child ui-checkbox-on">SMTP relay vulnerable (port 25)</label><input name="port_array[]" value="25" id="checkbox2" checked="checked" data-mini="true" data-cacheval="false" type="checkbox"></div>
+											<div class="ui-checkbox ui-mini"><label for="checkbox3" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-last-child ui-checkbox-off">HTTP/web server vulnerable (port 80)</label><input name="port_array[]" value="80" id="checkbox3" data-mini="true" data-cacheval="true" type="checkbox"></div>
+										</div>
+									</fieldset>    
+								</div>
+								<div class="ui-block-c">
+									<fieldset data-role="controlgroup" class="ui-controlgroup ui-controlgroup-vertical ui-corner-all">
+										<div class="ui-controlgroup-controls ">   
+											<div class="ui-checkbox ui-mini"><label for="checkbox4" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-on ui-first-child">NETBIOS susceptibility (port 139)</label><input name="port_array[]" value="139" id="checkbox4" checked="checked" data-mini="true" type="checkbox"></div>
+											<div class="ui-checkbox ui-mini"><label for="checkbox5" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-on ui-last-child">Windows file sharing susceptibility (port 445)</label><input name="port_array[]" value="445" id="checkbox5" checked="checked" data-mini="true" type="checkbox"></div>
+										</div>
+									</fieldset>    
+								</div>
+							</div>
+							<button type="submit" data-mini="true" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all">Start Scan</button>   
+					</div>
+					<div data-role="collapsible" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" class="ui-collapsible ui-collapsible-inset ui-corner-all ui-collapsible-themed-content ui-last-child">
+						<h3 class="ui-collapsible-heading">Scan your list of ports<span class="ui-collapsible-heading-status"> click to collapse contents</span></h3>
+						<label for="basic">Enter one or more port numbers</label>
+						<input name="ports" id="basic" data-mini="true" data-clear-btn="true" autofocus="" placeholder="80 443, 8080" type="tel">
+						<button type="submit" data-mini="true" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all">Start Scan</button>
+					</div>
+				</div>
+			</form><br />     
+			<h2 class="">What are ports?</h2>
+					
+			<p class="">Like windows or doors on a house, ports are just 
+	hardware locations for passing data in and out. Like breeze blowing in 
+	and out of the window, computers send information out (and receive data 
+	in) though these windows, or ports. (Not to confuse you but computers 
+	have internal ports (for connecting disk drives, monitors, keyboards, 
+	etc) as well as external ports (for connecting modems, printers, mouse 
+	devices, and other peripheral devices). But I'm not going to geek out 
+	about internal or external ports, let's just keep it simple here. How 
+	about an example?</p>
+
+			<ul><li>This web server is using port 80 to send this web page 
+	to your web browser. I'm do this by reading the web page off my disk 
+	then seding it flying out of my port 80, over the merry Internet, to the
+	 device you are 
+			looking at now. Your device will receive it through a "receiving
+	 port" (which will not be port 80) and finally your web browser will 
+	read the HTML code and display it as the nice-looking web page you're 
+	reading right now.</li></ul>
+
+			<p>But why port 80? Why do web servers use port 80? Nothing 
+	special about that number - people just got together and willy-nilly 
+	decided that port 80 would be the default port on which a web server 
+	would send out its content. 
+			Don't believe me? Ok, try this out: Go to your favorite web 
+	site, let's say <a href="http://www.t1shopper.com/" class="ui-link">http://www.t1shopper.com/</a> but instead of typing it in like you usually would, add a ":80" after the ".com" part, 
+			like this: <a href="http://www.t1shopper.com/" class="ui-link">http://www.t1shopper.com:80/</a>. Magic! You'll get the same web page even if you specify the port number!</p>
+			<p>
+			<ins class="adsbygoogle"
+				 style="display:block; text-align:center;"
+				 data-ad-layout="in-article"
+				 data-ad-format="fluid"
+				 data-ad-client="ca-pub-3647130182727233"
+				 data-ad-slot="5972468871"></ins>
+			<script>
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</p>
+			<p>So what's the advantage of having port numbers like this? 
+	Well, with publicly-agreed on port numbering, entering a port number 
+	becomes optional! 
+			Yes, it's faster - we don't have to type our fingers silly 
+	entering the port number every time. Instead of <a href="http://www.t1shopper.com/" class="ui-link">http://www.t1shopper.com:80/</a> we can 
+			just type <a href="http://www.t1shopper.com/" class="ui-link">http://www.t1shopper.com/</a> and our computers know (because of the http prefix) that we are requesting a 
+			web page and so it uses port 80 by default, without us having to type it. Aren't computers fun!</p>
+
+			<p>Ok, let's really geek out! Port numbers have been divided 
+	into three ranges: the Well Known Ports (0 through 1023), the Registered
+	 Ports (1024 through 49151), and the 
+			Dynamic and/or Private Ports (these are very highest ports 49152
+	 through 65535 and usually used for receiving data, as in our example 
+	above). And who keeps track of all these 
+			default port numbers, port lists and protocols? The Internet 
+	Assigned Numbers Authority. IANA not only coordinates this but also all 
+	the worldwide domain names and 
+			IP address assignments. They're busy. If you are a true geek, 
+	you'll enjoy the dry reading at <a href="http://www.faqs.org/rfcs/rfc793.html" class="ui-link">RFC793</a> which gives the full technical description of ports.</p>
+
+			<p>Some viruses attack specific ports on your computer as part of their design such as the old <a href="https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=Win32%2fSasser" class="ui-link">SASSER</a>
+	 virus 
+			which used TCP port 445. To test if you might be vulnerable to 
+	the SASSER virus, use the above port scan tool to scan port 445.  If the
+	 portscan 
+			says it can get through port 445 on whatever firewall you 
+	hopefully have, and your computer's port 445 is also open/active, then 
+	you may be 
+			susceptible to the SASSER virus.</p>
+
+			<p>For a complete security/virus scan T1 Shopper suggests visiting the following tools:</p>
+			<ul>
+			<li><a href="https://security.symantec.com/nss/getnss.aspx" class="ui-link">Symantec Security Check</a></li>
+			<li><a href="https://www.grc.com/x/ne.dll?bh0bkyd2" class="ui-link">ShieldsUp!</a></li>
+			</ul>
+			<p>
+			<ins class="adsbygoogle"
+				 style="display:block; text-align:center;"
+				 data-ad-layout="in-article"
+				 data-ad-format="fluid"
+				 data-ad-client="ca-pub-3647130182727233"
+				 data-ad-slot="5972468871"></ins>
+			<script>
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+			</p>
+
+			<div class="ui-grid-a ui-responsive" style="margin-top:-1.25rem">
+				<div class="ui-block-a">
+					<div class="jqm-block-content">
+						<h3>Pages &amp; Navigation</h3>
+
+						<p><a href="http://www.t1shopper.com/mobile/pages/" data-ajax="false" class="ui-link">Pages</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/navigation/" data-ajax="false" class="ui-link">Navigation</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/loader/" data-ajax="false" class="ui-link">Loader</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/transitions/" data-ajax="false" class="ui-link">Transitions</a></p>
+					</div>
+				</div>
+				<div class="ui-block-b">
+					<div class="jqm-block-content">
+						<h3>CSS Framework</h3>
+
+						<p><a href="http://www.t1shopper.com/mobile/theme-default/" data-ajax="false" class="ui-link">Theming</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/button-markup/" data-ajax="false" class="ui-link">Buttons</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/icons/" data-ajax="false" class="ui-link">Icons</a></p>
+						<p class=""><a href="http://www.t1shopper.com/mobile/grids/" data-ajax="false" class="ui-link">Grids</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/body-bar-classes/" data-ajax="false" class="ui-link">Body and bar classes</a></p>
+					</div>
+				</div>            
+				<div class="ui-block-a">
+					<div class="jqm-block-content">
+						<h3 class="">Widgets</h3>
+
+						<p><a href="http://www.t1shopper.com/mobile/toolbar/" data-ajax="false" class="ui-link">Toolbar</a>, <a href="http://www.t1shopper.com/mobile/navbar/" data-ajax="false" class="ui-link">Navbar</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/tabs/" data-ajax="false" class="ui-link">Tabs</a>, <a href="http://www.t1shopper.com/mobile/panel/" data-ajax="false" class="ui-link">Panel</a>, <a href="http://www.t1shopper.com/mobile/popup/" data-ajax="false" class="ui-link">Popup</a></p>
+						<p class=""><a href="http://www.t1shopper.com/mobile/listview/" data-ajax="false" class="ui-link">Listview</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/collapsible/" data-ajax="false" class="ui-link">Collapsible</a>, <a href="http://www.t1shopper.com/mobile/collapsibleset/" data-ajax="false" class="ui-link">Collapsible set</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/table-reflow/" data-ajax="false" class="ui-link">Table Reflow</a>, <a href="http://www.t1shopper.com/mobile/table-column-toggle/" data-ajax="false" class="ui-link">Table Column Toggle</a></p>
+						<p class=""><a href="http://www.t1shopper.com/mobile/filterable/" data-ajax="false" class="ui-link">Filterable</a></p>
+					</div>
+				</div>
+				<div class="ui-block-b">
+					<div class="jqm-block-content">
+						<h3>Form widgets</h3>
+
+						<p><a href="http://www.t1shopper.com/mobile/checkboxradio-checkbox/" data-ajax="false" class="ui-link">Checkboxes</a>, <a href="http://www.t1shopper.com/mobile/checkboxradio-radio/" data-ajax="false" class="ui-link">Radio buttons</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/selectmenu/" data-ajax="false" class="ui-link">Selectmenu</a>, <a href="http://www.t1shopper.com/mobile/selectmenu-custom/" data-ajax="false" class="ui-link">Custom menu</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/flipswitch/" data-ajax="false" class="ui-link">Flipswitch</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/slider/" data-ajax="false" class="ui-link">Slider</a>, <a href="http://www.t1shopper.com/mobile/rangeslider/" data-ajax="false" class="ui-link">Rangeslider</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/button/" data-ajax="false" class="ui-link">Input button</a></p>
+						<p><a href="http://www.t1shopper.com/mobile/controlgroup/" data-ajax="false" class="ui-link">Controlgroup</a></p>
+					</div>
+				</div>
+			</div>
+		</div><!-- /content -->
+		<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="jqm-footer ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
+			<p class="">Use of these services are subject to these <a href="http://www.t1shopper.com/termsofuse.shtml" class="ui-link">term of use</a> and <a href="http://www.t1shopper.com/privacypolicy.shtml" class="ui-link">privacy policy</a>.  Colocation and bandwidth by <a href="http://www.uscolo.com/" target="_blank" class="ui-link">U.S. Colo</a></p>
+			<p>© 2003-2017 T1 Shopper, Inc. All Rights Reserved.&nbsp; T1 Shopper is a pending registered trademark in the USA and Canada.</p>
+		</div><!-- /footer -->
+		<div data-role="panel" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-panel-closed ui-body-a ui-panel-animate" data-position="left" data-display="overlay" data-theme="a">
+			<div class="ui-panel-inner">
+				<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview">
+					<li data-icon="home" class="ui-first-child"><a href="http://www.t1shopper.com/mobile/" class="ui-btn ui-btn-icon-right ui-icon-home">Home</a></li>
+					<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-li-static ui-body-inherit ui-collapsible-collapsed">
+						<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+							<a href="http://www.t1shopper.com/service/t1/t1-line.shtml" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">Pricing & Information<span class="ui-collapsible-heading-status"> click to expand contents</span></a>
+						</h3>
+						<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+							<ul class="ui-listview">
+								<li class="ui-first-child"><a href="http://www.t1shopper.com/service/t1/t1-line.shtml" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">T1 Line Pricing</a></li>
+								<li><a href="http://www.t1shopper.com/service/fractional-t1/fractional-t1.shtml" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Fractional T1</a></li>
+								<li><a href="http://www.t1shopper.com/service/t3/t3-line.shtml" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">T3 Line</a></li>
+								<li><a href="http://www.t1shopper.com/service/ip-vpn/mpls-vpn.shtml" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VPN Services</a></li>
+								<li><a href="http://www.t1shopper.com/carriers/sla/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">SLA Report</a></li>
+								<li><a href="http://www.t1shopper.com/toppicks.shtml" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Most Popular</a></li>
+							</ul>
+						</div>
+					</li>
+					<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-li-static ui-body-inherit ui-collapsible-collapsed">
+						<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+							<a href="http://www.t1shopper.com/voip/" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">Internet Phone Service<span class="ui-collapsible-heading-status"> click to expand contents</span></a>
+						</h3>
+						<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+							<ul class="ui-listview">
+								<li class="ui-first-child"><a href="http://www.t1shopper.com/voip/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">VOIP Providers</a></li>
+							</ul>
+						</div>
+					</li>
+					<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-li-static ui-body-inherit ui-collapsible-collapsed">
+						<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+							<a href="http://www.t1shopper.com/carriers/" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">T1 Service Providers<span class="ui-collapsible-heading-status"> click to expand contents</span></a>
+						</h3>
+						<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+							<ul class="ui-listview">
+								<li class="ui-first-child"><a href="http://www.t1shopper.com/carriers/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">North America</a></li>
+								<li><a href="http://www.t1shopper.com/carriers/wireless" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Fixed Wireless</a></li>
+								<li><a href="http://www.t1shopper.com/carriers/international.php" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">International</a></li>
+							</ul>
+						</div>
+					</li>
+					<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-li-static ui-body-inherit ui-collapsible-collapsed">
+						<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
+							<a href="http://www.t1shopper.com/tools/" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">Tools<span class="ui-collapsible-heading-status"> click to expand contents</span></a>
+						</h3>
+						<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
+							<ul class="ui-listview">
+								<li class="ui-first-child"><a href="http://www.t1shopper.com/tools/speedtest/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Speed Test</a></li>
+								<li><a href="http://www.t1shopper.com/tools/traceroute/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Traceroute</a></li>
+								<li><a href="http://www.t1shopper.com/tools/calculate/ip-subnet/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Subnet Calculator</a></li>
+								<li class="ui-first-child"><a href="http://www.t1shopper.com/tools/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Whois/Ping/More</a></li>
+								<li><a href="mobile4.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Port Scanner</a></li>
+								<li><a href="http://www.t1shopper.com/tools/http-headers.php" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">HTTP Headers</a></li>
+								<li class="ui-first-child"><a href="http://www.t1shopper.com/tools/calculate/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">File Size Calculator</a></li>
+								<li><a href="http://www.t1shopper.com/tools/calculate/downloadcalculator.php" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">File Transfer Calculator</a></li>
+								<li><a href="http://www.t1shopper.com/definitions.shtml" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Telcom Definitions</a></li>
+							</ul>
+						</div>
+					</li>
+					<li><a href="http://www.t1shopper.com/aboutus.shtml" class="ui-btn ui-btn-icon-right ui-icon-carat-r">About Us</a></li>
+					<li><a style="border-bottom:0" href="http://www.t1shopper.com/contactus/" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Contact Us</a></li>
+				</ul>
+			</div>
+			<div class="ft-ad-height3" style="">
+			<!-- VOIP336x280 -->
+				<ins class="adsbygoogle"
+					 style="display:inline-block;width:336px;height:280px"
+					 data-ad-client="ca-pub-3647130182727233"
+					 data-ad-slot="3894607171"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div><!-- /panel -->
+		<!-- TODO: This should become an external panel so we can add input to markup (unique ID) -->
+        <div data-role="panel" class="jqm-search-panel ui-panel ui-panel-position-right ui-panel-display-overlay ui-panel-closed ui-body-a ui-panel-animate" data-position="right" data-display="overlay" data-theme="a">
+            <div class="jqm-search">
+                <h3>Broadband Service Search</h3>
+				<form name=f method=POST data-ajax="false" action="enter_street_address.php">
+					<input type=hidden  name=id>
+					<input data-type="search" name=install_phone type=text maxlength=5 placeholder="ZIP Code for Service">
+					<button type="submit" data-mini="true" class="ui-btn ui-btn-a ui-icon-check ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all">Get Providers</button>
+				</form>
+			</div>
+		</div><!-- /panel -->
+	</div><!-- /page -->
+</body>
+</html>
