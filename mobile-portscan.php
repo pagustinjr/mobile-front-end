@@ -1,9 +1,79 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+ini_set('output_buffering',10);
+ob_implicit_flush(1);
+$requester_ip=$_SERVER['REMOTE_ADDR'];
+$device_ip=FALSE;
+
+$array_of_ports=array();
+$device_port_min=FALSE;
+$device_port_max=FALSE;
+if (!empty($_REQUEST['ports'])) {
+    /*
+    * If the Customer filled out the ports form then use it first and ignore everything else.
+    */
+    preg_match_all('/[0-9]+/',$_REQUEST['ports'],$matches); //Test at command line like this: php -r "preg_match_all('/[0-9]+/','80|443,34dfsg45a78 2345',\$matches); print_r(\$matches);"
+    $array_of_ports=$matches[0];
+} elseif (!empty($_REQUEST['port_array'])) {
+    /*
+    * If the Customer filled out the portnumber then use it ignore everything else.
+    */    
+    if (is_array($_REQUEST['port_array'])) {
+        foreach ($_REQUEST['port_array'] as $key => $value) {
+            $array_of_ports[]=preg_replace('/[^0-9.]*/','', $value);
+        }        
+    } else {
+        $array_of_ports[]=preg_replace('/[^0-9.]*/','', $_REQUEST['port_array']);       
+    }
+} else {
+	$device_port_min    =preg_replace('/[^0-9.]*/','', @$_REQUEST['port_start']); //Zero is a valid port!
+	$device_port_max    =preg_replace('/[^0-9.]*/','', @$_REQUEST['port_end']); 
+    if (ctype_digit($device_port_min) && ctype_digit($device_port_max)) {
+        if (($device_port_max-$device_port_min)>0) {
+            /*
+            * If the max and min are the same, then don't use range, just use a single port number, otherwise the function "range" thows errors. 
+            */        
+            $array_of_ports = range($device_port_min, $device_port_max);
+        } else {
+            $array_of_ports[] = $device_port_max; 
+        }        
+    }
+}
+if (!empty($array_of_ports)) {
+    $array_of_ports=array_filter(array_unique($array_of_ports)); //Remove duplicates, remove blanks, 
+    sort($array_of_ports,SORT_NUMERIC); //order from smallest to biggest.
+}
+
+if (!empty($_REQUEST['scan_host']) && trim($_REQUEST['scan_host'])!='') {
+    $device_ip          =trim($_REQUEST['scan_host']);
+    $html['scan_host']  =htmlspecialchars($device_ip);
+} else {
+    /*
+    *  If no host was entered, then use the REMOTE_ADDR.
+    */
+    $html['scan_host']=$device_ip=$requester_ip; ;
+}
+
+if (!empty($array_of_ports)) {
+    require 'safe_use.1.1.php';
+    $su = new SafeUse('SC', $requester_ip, $device_ip, $array_of_ports);  
+    if (!empty($su) && $su->handler()===TRUE) {
+        $error_condition=$su->error_condition;
+    } elseif ($su->mysql_error=='1226') {
+        $error_condition='There are more than 12 people using this service right now.  Try back later.  Although I\'m a fast computer with a super-fat Internet connection and can handle many more requests per second than this, my owners have told me to limit the use of this service to 12 concurrent users at a time.  Maybe when my owners stop being so grumpy about the March 2010 botnet attack they will reconsider this restriction.  Botnets aren\'t my favorite thing.';       
+    } else {
+        $error_condition='I\'m sorry, some unknown error is happening - it does not appear to be your fault.  Please contact us and let us know about this!';
+    }   
+    @mysqli_close($su->link);  
+} else {
+    $error_condition='no_ports_to_scan';
+}
+?>
+<!DOCTYPE html>
 <html class="ui-mobile">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- base href="http://www.t1shopper.com/mobile/mobile3.php" -->
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
-    <title>Port Scanning 175.158.203.204...</title>
+    <title>Port Scanning <?php echo $html['scan_host'] ?>...</title>
     <link rel="shortcut icon" href="http://www.t1shopper.com/favicon.ico">
     <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
     <link rel="stylesheet" href="//www.t1shopper.com/mobile/mobile.css">
@@ -37,25 +107,7 @@
 		 else window.onload = downloadJSAtOnload;
 	</script>
 	<style>
-		.adslot_1 { width: 320px; height: 50px; ;margin:0 auto}
-        .ft-ad-height{width:100%;height:50px}
-        .ft-height{width:100%;height:200px;z-index:9999}
-
-		@media (min-width:500px) { 
-			.adslot_1 { width: 468px; height: 60px; } 
-			.ft-ad-height{height:60px}
-			.ft-height{height:210px}
-		}
-		@media (min-width:800px) { 
-			.adslot_1 { width: 728px; height: 90px; } 
-			.ft-ad-height{height:90px}
-			.ft-height{height:240px}
-		}
-		@media (min-width:980px) { 
-			.adslot_1 { width: 970px; height: 90px; } 
-			.ft-ad-height{height:90px}
-			.ft-height{height:240px}
-		}	        p{font-family:'Open Sans'}
+		p{font-family:'Open Sans'}
         .hdr2 {
             font-family: serif;
             font-size:27px;
@@ -68,7 +120,7 @@
             font-family: monospace;
             font-size:13px;
             line-height:15px;
-            padding:2rem 0 0 1rem;
+            padding:0.25rem 0 0 1rem;
         }
         .ui-body-a{margin-top:1rem}
     </style>
@@ -80,76 +132,6 @@
             <a href="#" class="jqm-navmenu-link ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext" data-role="button" role="button">Menu</a>
             <a href="#" class="jqm-search-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Search</a>
         </div><!-- /header -->
-        <div role="main" class="ui-content jqm-content">
-            <div class="ui-body ui-body-a ui-corner-all">
-                <p>
-                    <a href="http://www.t1shopper.com/?Tools" class="ui-link">T1 Shopper.com</a> shows you the DSL, T1 or DS3 providers servicing your area, in real time! Give it a try <a href="http://www.t1shopper.com/?Tools" class="ui-link">for free</a>.
-                    Just enter a phone number and ZIP code for service <a href="http://www.t1shopper.com/?Tools" class="ui-link">here</a>.
-                </p>
-            </div>
-            <div class="hdr2">Scanning ports on 175.158.200.177</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-            <div class="hdr3">175.158.203.204 isn't responding on port 80 (http).</div>
-        </div>
         <div data-role="panel" class="jqm-search-panel ui-panel ui-panel-position-right ui-panel-display-overlay ui-panel-closed ui-body-a ui-panel-animate" data-position="right" data-display="overlay" data-theme="a">
             <div class="jqm-search">
                 <h3>Broadband Service Search</h3>
@@ -211,7 +193,7 @@
 									<li data-filtertext="form checkboxradio widget radio input radio buttons controlgroups"><a href="http://www.t1shopper.com/tools/traceroute/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Traceroute</a></li>
 									<li data-filtertext="form checkboxradio widget checkbox input checkboxes controlgroups"><a href="http://www.t1shopper.com/tools/calculate/ip-subnet/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Subnet Calculator</a></li>
 									<li data-filtertext="form checkboxradio widget checkbox input checkboxes controlgroups" class="ui-first-child"><a href="http://www.t1shopper.com/tools/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Whois/Ping/More</a></li>
-									<li data-filtertext="form checkboxradio widget radio input radio buttons controlgroups"><a href="http://www.t1shopper.com/tools/port-scan/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Port Scanner</a></li>
+									<li data-filtertext="form checkboxradio widget radio input radio buttons controlgroups"><a href="mobile4.html" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">Port Scanner</a></li>
 									<li data-filtertext="form checkboxradio widget checkbox input checkboxes controlgroups"><a href="http://www.t1shopper.com/tools/http-headers.php" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">HTTP Headers</a></li>
 									<li data-filtertext="form checkboxradio widget checkbox input checkboxes controlgroups" class="ui-first-child"><a href="http://www.t1shopper.com/tools/calculate/" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">File Size Calculator</a></li>
 									<li data-filtertext="form checkboxradio widget radio input radio buttons controlgroups"><a href="http://www.t1shopper.com/tools/calculate/downloadcalculator.php" data-ajax="false" class="ui-btn ui-btn-icon-right ui-icon-carat-r">File Transfer Calculator</a></li>
@@ -227,17 +209,59 @@
         <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ft-height jqm-footer ui-footer ui-bar-inherit ui-footer-fixed slideup" role="contentinfo">
             <p class="">Use of these services are subject to these <a href="http://www.t1shopper.com/termsofuse.shtml" class="ui-link">term of use</a> and <a href="http://www.t1shopper.com/privacypolicy.shtml" class="ui-link">privacy policy</a>.  Colocation and bandwidth by <a href="http://www.uscolo.com/" target="_blank" class="ui-link">U.S. Colo</a></p>
             <p>© 2003-2017 T1 Shopper, Inc. All Rights Reserved.&nbsp; T1 Shopper is a pending registered trademark in the USA and Canada.</p>
-			<div data-role="footer" data-position="fixed" class="ft-ad-height" style="text-align:center;margin-left:auto;margin-right:auto">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-					<ins class="adsbygoogle adslot_1"
-						 style="display:block"
-						 data-ad-client="ca-pub-3647130182727233"
-						 data-ad-slot="5063659030"></ins>
-				<script>
-					(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
         </div><!-- /footer -->
+        <div role="main" class="ui-content jqm-content">
+<?php
+			if(!empty($_GET['scan_host'])) {  
+				$ports = preg_split( "/(,| )+/", $_GET['ports'] );
+				$domain = $_GET['scan_host'];
+				$results = array();
+
+				echo "<div class='hdr2'>Scanning ports on $domain</div>";
+/*	
+    foreach($ports as $port) {
+        if($pf = @fsockopen($domain, $port, $err, $err_string, 1)) {
+            $results[$port] = true;
+            fclose($pf);
+        } else {
+            $results[$port] = false;
+        }
+    }
+	set_time_limit(120);
+    foreach($results as $port=>$val) {
+		ob_flush(); flush();
+		sleep(1);	
+        $prot = getservbyport($port,"tcp");
+                echo "<div class='hdr3'>" . $domain;
+        if($val) {
+            echo " responded on port";
+        }
+        else {
+            echo " isn't responding on port";
+        }
+		print " $port ($prot) .</div>";
+    }
+*/	
+//ini_set('output_buffering',5);
+				echo '<pre>'."\r\n";
+				if (count($ports) > 0) {
+					foreach ($ports as $k => $port_to_scan) {
+//ob_implicit_flush(2);
+						$fp = @fsockopen($domain, $port_to_scan, $errno, $errstr, 2); 
+							if (is_resource($fp)) {
+								echo '<tt style="color:red;">',$domain,' is responding on port ',$port_to_scan,' (',getservbyport ($port_to_scan, 'tcp'),').</tt><br>'."\r\n";
+							} else {
+								echo '<tt>',$domain,' isn\'t responding on port ',$port_to_scan,' ('.getservbyport($port_to_scan, 'tcp'),').</tt>'."\r\n";
+							}
+						 if (is_resource($fp)) {
+							 fclose($fp);
+						 }
+					} //Close foreach
+					echo '</pre>';
+				}
+			}
+?>            
+        </div>
     </div><!-- /page -->
     <div class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon-loading"></span><h1>loading</h1></div><div class="ui-panel-dismiss"></div><div class="ui-panel-dismiss"></div>
 </body>
