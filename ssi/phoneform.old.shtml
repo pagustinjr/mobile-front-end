@@ -1,0 +1,45 @@
+<table cellspacing=0 cellpadding=2 border=0>
+	<tr>
+		<td align=left valign=middle>
+			<div style="padding:10px 0px 10px 0px;">
+				<font size="-1" face="Arial"><strong>Please start by entering the ZIP code where service is to be installed.</strong></font>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align=left valign=middle nowrap>
+			<input id="sz[1]" name="sz[]" type=text size=30 maxlength=5 style="width:100%"><font color="#FF0000" size="+1"><strong>*</strong></font>
+			<font face="arial" size="-1"><strong>ZIP Code for service </strong></font>
+		</td>
+	</tr>
+</table>
+<table cellspacing=0 cellpadding=2 border=0>
+	<tr>
+		<td align=left valign=middle>
+			<div style="padding:10px 0px 10px 0px;">
+				<font size="-1" face="Arial"><strong>Then enter your street address.</strong></font>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align=left valign=middle nowrap>
+			<input id="sa[1]" name="sa[]" type=text size=30 style="width:100%"><font color="#FF0000" size="+1"><strong>*</strong></font>
+			<font face="arial" size="-1"><strong>Street Address for service </strong></font>
+		</td>
+	</tr>
+</table>
+ <table cellspacing=0 cellpadding=2 border=0>
+	<tr>
+		<td align=left valign=middle>
+			<div style="padding:10px 0px 10px 0px;">
+				<font size="-1" face="Arial"><strong>Here's your phone.</strong></font>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td align=left valign=middle nowrap>
+			<input id="install_phone[1]" name="install_phone[]" type=text size=30 style="width:100%"><font color="#FF0000" size="+1"><strong>*</strong></font>
+			<font face="arial" size="-1"><strong>Phone No. for service</strong></font>
+		</td>
+	</tr>
+</table>
